@@ -15,5 +15,8 @@ public class MessageConfiguration : IEntityTypeConfiguration<Message>
         builder.Property(m => m.Input)
             .IsRequired()
             .HasMaxLength(2000);
+
+        builder.Property(m => m.CreatedAt)
+            .HasDefaultValueSql("NOW()");
     }
 }

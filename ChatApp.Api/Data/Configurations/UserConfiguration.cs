@@ -20,5 +20,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithOne(m => m.User)
             .HasForeignKey(m => m.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.Property(m => m.CreatedAt)
+            .HasDefaultValueSql("NOW()");
+
+        builder.HasIndex(u => u.Username)
+            .IsUnique();
     }
 }
